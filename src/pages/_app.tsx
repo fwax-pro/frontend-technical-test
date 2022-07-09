@@ -1,12 +1,32 @@
 import type { AppProps } from 'next/app'
-import { getLoggedUserId } from '../utils/getLoggedUserId'
-import '../styles/globals.css'
+import { LayoutGroup } from "framer-motion"
+import { ThemeProvider, DefaultTheme } from 'styled-components'
 
-// Default way to get a logged user
-export const loggedUserId = getLoggedUserId()
+import initAxios from '../libs/axios'
+
+import GlobalStyle from '../components/globalstyles'
+
+import '../styles/static.css'
+
+
+initAxios();
+
+export const theme: DefaultTheme = {
+  colors: {
+    primary: '#ff6e14',
+    secondary: '#fff',
+  },
+}
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <ThemeProvider theme={theme}>
+      <LayoutGroup>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </LayoutGroup>
+    </ThemeProvider>
+  )
 }
 
 export default MyApp

@@ -1,71 +1,56 @@
-# Context :
+# Quick Start
 
-At leboncoin, our users can share messages about a transaction, or ask for informations about any products.
+## Installation :
+1. Setup `.env`
+```bash
+cp .env.dist .env
+```
 
-Your job is to create the interface to consult those messages.
-The interface needs to work on both desktop & mobile devices.
+2. Install
+```bash
+yarn
+```
 
-In addition to your code, a README explaining your thought process and your choices would be appreciated.
+3. Start server
+```bash
+yarn start-server
+```
 
-# Exercice :
+4. Start app
+```bash
+yarn dev
+```
 
+# Features
 - Display a list of all the conversations
 - Allow the user to select a conversation
   - Inside the conversation, there is a list of all the messages between these two users.
   - As a user, you can type and send new messages in this conversation
 
-**As your application can be used by millions of users, make sure to provide some robust safety guards.**
+# Explains
+I wanted focus on the design and on a clean code
 
-### Sketches :
+I created an conversation app messenger-like for the design with the colors of Leboncoin.
 
-Obvisouly, it is up to you to make something nice and pretty, you are free to design it the way you like. The sketches are here to give you an idea on how it should look.
+I have chosen the lib styled-components for two reasons:
+- First, I discovered that lib during my last mission
+- Second, that lib is going to be for next mission.
 
-<details>
-  <summary>Click to see the sketches</summary>
-  
-Mobile list :
+I have chosen framer motion to bring some motion design and I've been wanting to test it for a long time.
 
-![](./sketches/list-mobile.jpg)
+II have created a route on api to  be able to update the timestamp of the
+conversation. 
 
-Desktop list :
+I have updated the middleware, so that it can retrieve one unique conversation from its id.
 
-![](./sketches/list-desktop.jpg)
+I have used fs.readFile  to read the file
+db.json everytime  I make a request, which can update the last datas in app.
 
-Mobile conversation :
+# Screenshoots
+![home](home.png)
+![conversations](conversations.png)
+![conversation](conversation.png)
 
-![](./sketches/conv-mobile.jpg)
+# Update next time
+- button morphing on the add conversation (I miss time...)
 
-Desktop conversation :
-
-![](./sketches/conv-desktop.jpg)
-
-</details>
-
-### API :
-
-You can find the API swagger file in `docs/api-swagger.yaml`.
-
-For a better readibility, you can view it on [https://leboncoin.tech/frontend-technical-test/](https://leboncoin.tech/frontend-technical-test/).
-
----
-
-## Bonus 1 :
-
-We provide some conversation samples, but can you improve the app so the user can now create new conversations ?
-
-## Bonus 2 :
-
-Our infrastructure is a bit shaky.. Sometimes the servers are crashing. “It’s not you, it’s me”, but maybe you can display something nice to warn the user and handle it gracefully.
-
-## Do you want to make the app even better ?
-
-Feel free to make as many improvements as you like.
-We love creativity and technical challenges.
-
-If you are out of ideas, here are some thoughts :
-
-- As we want to reach our users anywhere, we need to make sure the app is performing well. What can you do to make it really fast ?
-
-- Our goal is to support everybody in the country, including people with disabilities. As a good citizen and a good developer, can you make sure the app is accessible for everyone ?
-
-- We all love to relax after a hard day’s work. It would be a shame if we didn’t feel confident enough about the upcoming automatic deployment. Are you sure everything has been tested thoroughly ?
