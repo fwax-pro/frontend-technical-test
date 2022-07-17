@@ -5,7 +5,7 @@ const fs = require('fs')
 // and return both conversations where userId is sender or recipient
 module.exports = (req, res, next) => {
   fs.readFile(`${path.dirname(__filename)}/../db.json`, 'utf8', (error, db) => {
-    if (err) throw err;
+    if (error) throw error;
 
     if (/conversations/.test(req.url) && req.method === 'GET') {
       const id = req.query?.id

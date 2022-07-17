@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
+import styled from 'styled-components'
 
 import { Conversation } from "../../types/conversation"
 
@@ -55,9 +56,20 @@ export interface UseConversationsState {
 }
 
 export const Conversations = ({conversations, loggedUserId}) => {
+    if(conversations.length === 0) {
+        return (
+            <Container><h2>Pas de conversation</h2></Container>
+        )
+    }
+
     return (
         <div>
             <ConversationList conversations={conversations} loggedUserId={loggedUserId} />
         </div>
     )
 };
+
+const Container = styled.div`
+    display: flex;
+    justify-content: center;
+`;

@@ -2,7 +2,6 @@ import { FC, useEffect, useState } from "react"
 import Link from "next/link"
 import styled from "styled-components"
 import { motion } from "framer-motion"
-import { useRouter } from 'next/router'
 import Image from "next/image"
 
 import { Avatar } from "../sharedstyles"
@@ -16,8 +15,6 @@ interface ConversationCardProps {
 }
 
 export const ConversationCard: FC<ConversationCardProps> = ({ conversation, loggedUserId }) => {
-    const router = useRouter();
-
     const [lastMessageTimestamp, setLastMessageTimestamp] = useState<String>('');
     const [nickname, setNickname] = useState<String>('');
 
@@ -27,7 +24,7 @@ export const ConversationCard: FC<ConversationCardProps> = ({ conversation, logg
     },[loggedUserId, conversation]);
 
     const otherUserId = getOtherUserId(loggedUserId, conversation);
-   
+
     return (
         <Link href={`/messages/${conversation.id}`}>
             <a>
@@ -36,7 +33,7 @@ export const ConversationCard: FC<ConversationCardProps> = ({ conversation, logg
                         <Avatar>
                             <Image
                                 alt='avatar user'
-                                src={`${router.basePath}/avatars/user-${otherUserId}.png`}
+                                src={`/avatars/user-${otherUserId}.png`}
                                 className="image" 
                                 width={64}
                                 height={64}
